@@ -1,6 +1,6 @@
 {
-	"name": "",
-	"short_name": "",
+	"name": "Quiz by GPT",
+	"short_name": "Quiz by GPT",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
 			"type": "image/png"
 		}
 	],
-	"theme_color": "#ffffff",
+	"theme_color": "#3956a9",
 	"background_color": "#ffffff",
 	"display": "standalone"
 }
