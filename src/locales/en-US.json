@@ -1,0 +1,11 @@
+{
+	"app": {
+		"name": "Quiz by GPT",
+		"home": {
+			"title": "Home"
+		},
+		"test": {
+			"title": "Quiz"
+		}
+	}
+}
