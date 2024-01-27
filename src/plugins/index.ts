@@ -1,3 +1,3 @@
-import localizationPlugin from './localization.plugin'
+import localizationPlugin from './localizationPlugin'
 
 export { localizationPlugin }
