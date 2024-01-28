@@ -1,3 +1,3 @@
-import localizationPlugin from './localizationPlugin'
+import I18nPlugin from './I18nPlugin'
 
-export { localizationPlugin }
+export { I18nPlugin }

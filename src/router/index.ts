@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import { registerMiddlewares, layoutMiddleware, titleMiddleware } from '@/middleware'
+import { I18nPlugin } from '@/plugins'
 import Layout from '@/layouts'
 
 declare module 'vue-router' {
@@ -10,6 +11,8 @@ declare module 'vue-router' {
     }
 }
 
+const { t } = I18nPlugin.global
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -17,13 +20,19 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: () => import('@/views/HomeView.vue'),
-            meta: { title: 'Home', layout: Layout.Empty }
+            meta: { title: t('app.home.title'), layout: Layout.Empty }
         },
         {
-            path: '/test',
-            name: 'test',
-            component: () => import('@/views/TestView.vue'),
-            meta: { title: 'Test', layout: Layout.Empty }
+            path: '/session/:id',
+            name: 'session',
+            component: () => import('@/views/SessionView.vue'),
+            meta: { title: t('app.session.title'), layout: Layout.Empty }
+        },
+        {
+            path: '/session/:id/quiz/:id',
+            name: 'quiz',
+            component: () => import('@/views/QuizView.vue'),
+            meta: { title: t('app.quiz.title'), layout: Layout.Empty }
         }
     ]
 })
