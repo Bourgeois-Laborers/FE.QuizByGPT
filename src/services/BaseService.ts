@@ -5,13 +5,8 @@ import { AxiosPlugin } from '@/plugins'
 const HttpClientInstance = new AxiosHttpClient(AxiosPlugin)
 
 export default class BaseService {
-    protected http: HttpClient
-    protected baseUrl: string
-
-    constructor(baseUrl: string) {
-        this.http = HttpClientInstance
-        this.baseUrl = baseUrl
-    }
+    protected http: HttpClient = HttpClientInstance
+    protected baseUrl: string = import.meta.env.VITE_API_URL
 
     get<T = unknown>(path: string) {
         return this.http.get<T>(this.baseUrl + path)
