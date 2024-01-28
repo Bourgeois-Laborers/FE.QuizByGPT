@@ -1,0 +1,14 @@
+{
+	"app": {
+		"name": "Quiz by GPT",
+		"home": {
+			"title": "Home"
+		},
+		"session": {
+			"title": "Session"
+		},
+		"quiz": {
+			"title": "Quiz"
+		}
+	}
+}

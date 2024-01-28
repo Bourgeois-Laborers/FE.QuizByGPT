@@ -1,6 +1,6 @@
 import registerMiddlewares from './registerMiddlewares'
 
-import layoutMiddleware from './layout.middleware'
-import titleMiddleware from './title.middleware'
+import layoutMiddleware from './layoutMiddleware'
+import titleMiddleware from './titleMiddleware'
 
 export { registerMiddlewares, layoutMiddleware, titleMiddleware }
