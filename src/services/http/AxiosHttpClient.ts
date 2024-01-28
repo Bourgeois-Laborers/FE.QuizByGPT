@@ -1,5 +1,5 @@
 import type { AxiosInstance } from 'axios'
-import type { HttpClient, HttpClientResponse } from './HttpClient'
+import type { HttpClient, HttpClientResponse, HttpClientRequestOption } from './HttpClient'
 
 export class AxiosHttpClient implements HttpClient {
     private readonly axios: AxiosInstance
@@ -10,46 +10,61 @@ export class AxiosHttpClient implements HttpClient {
 
     async get<T = unknown>(
         path: string,
-        params?: Record<string, unknown>
+        options: HttpClientRequestOption = {}
     ): Promise<HttpClientResponse<T>> {
         try {
-            const response = await this.axios.get<T>(path, { params })
+            const response = await this.axios.get<T>(path, options)
             return [null, response.data]
         } catch (error: any) {
             return [error, null]
         }
     }
 
-    async post<T = unknown>(path: string, body: unknown): Promise<HttpClientResponse<T>> {
+    async post<T = unknown>(
+        path: string,
+        body: unknown,
+        options: HttpClientRequestOption = {}
+    ): Promise<HttpClientResponse<T>> {
         try {
-            const response = await this.axios.post<T>(path, body)
+            const response = await this.axios.post<T>(path, body, options)
             return [null, response.data]
         } catch (error: any) {
             return [error, null]
         }
     }
 
-    async put<T = unknown>(path: string, body: unknown): Promise<HttpClientResponse<T>> {
+    async put<T = unknown>(
+        path: string,
+        body: unknown,
+        options: HttpClientRequestOption = {}
+    ): Promise<HttpClientResponse<T>> {
         try {
-            const response = await this.axios.put<T>(path, body)
+            const response = await this.axios.put<T>(path, body, options)
             return [null, response.data]
         } catch (error: any) {
             return [error, null]
         }
     }
 
-    async patch<T = unknown>(path: string, body: unknown): Promise<HttpClientResponse<T>> {
+    async patch<T = unknown>(
+        path: string,
+        body: unknown,
+        options: HttpClientRequestOption = {}
+    ): Promise<HttpClientResponse<T>> {
         try {
-            const response = await this.axios.patch<T>(path, body)
+            const response = await this.axios.patch<T>(path, body, options)
             return [null, response.data]
         } catch (error: any) {
             return [error, null]
         }
     }
 
-    async delete<T = unknown>(path: string): Promise<HttpClientResponse<T>> {
+    async delete<T = unknown>(
+        path: string,
+        options: HttpClientRequestOption = {}
+    ): Promise<HttpClientResponse<T>> {
         try {
-            const response = await this.axios.delete<T>(path)
+            const response = await this.axios.delete<T>(path, options)
             return [null, response.data]
         } catch (error: any) {
             return [error, null]
