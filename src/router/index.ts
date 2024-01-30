@@ -14,7 +14,7 @@ declare module 'vue-router' {
 const { t } = I18nPlugin.global
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.VITE_API_URL),
+    history: createWebHistory(import.meta.env.VITE_BASE_URL),
     routes: [
         {
             path: '/',
@@ -23,13 +23,13 @@ const router = createRouter({
             meta: { title: t('app.home.title'), layout: Layout.Empty }
         },
         {
-            path: '/session/:id',
+            path: '/session/:sessionId',
             name: 'session',
             component: () => import('@/views/SessionView.vue'),
             meta: { title: t('app.session.title'), layout: Layout.Empty }
         },
         {
-            path: '/session/:id/quiz/:id',
+            path: '/session/:sessionId/quiz/:quizId',
             name: 'quiz',
             component: () => import('@/views/QuizView.vue'),
             meta: { title: t('app.quiz.title'), layout: Layout.Empty }

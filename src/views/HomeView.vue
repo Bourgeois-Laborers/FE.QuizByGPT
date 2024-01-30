@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { BaseCard } from '@/components/atoms'
+import { BaseContainer } from '@/components/templates'
+</script>
+
 <template>
-    <div>{{ $t('app.home.title') }}</div>
+    <BaseContainer>
+        <BaseCard></BaseCard>
+    </BaseContainer>
 </template>
