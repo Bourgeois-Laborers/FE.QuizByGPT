@@ -1,0 +1,29 @@
+:root {
+    /* Colors palette */
+    --color-transparent: transparent;
+    --color-white: rgb(255, 255, 255);
+    --color-white-soft: rgb(250, 250, 250);
+    --color-black: rgb(24, 24, 24);
+    --color-black-soft: rgb(34, 34, 34);
+    --color-gray: rgb(216, 219, 223);
+    --color-gray-soft: rgb(237, 238, 241);
+    --color-primary: rgb(57, 86, 169);
+    --color-success: rgb(16, 185, 129);
+    --color-error: rgb(239, 68, 68);
+
+    // Default theme colors
+    --color-background: var(--color-white);
+    --color-text: var(--color-black);
+    --color-text-secondary: var(--color-black-soft);
+    --color-border: var(--color-gray-soft);
+}
+
+// Dark theme override
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: var(--color-black);
+        --color-text: var(--color-white);
+        --color-text-secondary: var(--color-white-soft);
+        --color-border: var(--color-gray);
+    }
+}

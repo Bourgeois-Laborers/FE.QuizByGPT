@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { BaseContainer } from '@/components/templates'
+</script>
+
 <template>
-    <div>{{ $t('app.session.title') }}</div>
+    <BaseContainer>
+        {{ $t('app.session.title') }}
+    </BaseContainer>
 </template>

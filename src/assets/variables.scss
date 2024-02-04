@@ -1,105 +1,85 @@
 :root {
-    /* Color palette */
-    $color-transparent: transparent;
-    $color-white: rgb(255, 255, 255);
-    $color-white-soft: rgb(250, 250, 250);
-    $color-black: rgb(24, 24, 24);
-    $color-black-soft: rgb(34, 34, 34);
-    $color-gray: rgb(216, 219, 223);
-    $color-gray-soft: rgb(237, 238, 241);
-    $color-primary: rgb(57, 86, 169);
-    $color-success: rgb(16, 185, 129);
-    $color-error: rgb(239, 68, 68);
+    /* Typography */
+    --font-family: system-ui, sans-serif;
+    --font-size-regular: 1rem;
+    --font-weight-regular: 400;
+
+    /* Spacing */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.5rem;
+    --spacing-6: 2rem;
+    --spacing-7: 3rem;
+    --spacing-8: 4rem;
+    --spacing-9: 6rem;
+    --spacing-10: 8rem;
+
+    /* Rounded */
+    --rounded-sm: 0.25rem;
+    --rounded-md: 0.5rem;
+    --rounded-lg: 1rem;
+
+    /* Border */
+    --border-width: 1px;
+
+    /* Shadow */
+    --shadow-focused: 0 0 0 3px rgba(57, 86, 169, 0.2);
 }
 
-/* Semantic colors */
-:root {
-    $color-background: $color-white;
-    $color-text: $color-black;
-    $color-text-secondary: $color-black-soft;
-    $color-border: $color-gray-soft;
-}
+@for $i from 0 through 10 {
+    $spacer-value: $i * 0.25rem;
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        $color-background: $color-soft;
-        $color-text: $color-white-soft;
-        $color-text-secondary: $color-gray;
-        $color-border: $color-black-soft;
+    .m-#{$i} {
+        margin: $spacer-value;
     }
-}
+    .p-#{$i} {
+        padding: $spacer-value;
+    }
 
-/* Rounded */
-:root {
-    $rounded-0: 0;
-    $rounded-1: 0.25rem;
-    $rounded-2: 0.5rem;
-}
+    .mt-#{$i} {
+        margin-top: $spacer-value;
+    }
+    .mr-#{$i} {
+        margin-right: $spacer-value;
+    }
+    .mb-#{$i} {
+        margin-bottom: $spacer-value;
+    }
+    .ml-#{$i} {
+        margin-left: $spacer-value;
+    }
 
-/* Border */
-:root {
-    $border-0: 0;
-    $border-1: 1px;
-    $border-2: 2px;
-}
+    .pt-#{$i} {
+        padding-top: $spacer-value;
+    }
+    .pr-#{$i} {
+        padding-right: $spacer-value;
+    }
+    .pb-#{$i} {
+        padding-bottom: $spacer-value;
+    }
+    .pl-#{$i} {
+        padding-left: $spacer-value;
+    }
 
-/* Spacing */
-:root {
-    $spacing-0: 0;
-    $spacing-1: 0.25rem;
-    $spacing-2: 0.5rem;
-    $spacing-3: 0.75rem;
-    $spacing-4: 1rem;
-    $spacing-5: 1.5rem;
-    $spacing-6: 2rem;
-    $spacing-7: 3rem;
-    $spacing-8: 4rem;
-    $spacing-9: 6rem;
-    $spacing-10: 8rem;
-}
+    .mx-#{$i} {
+        margin-left: $spacer-value;
+        margin-right: $spacer-value;
+    }
+    .my-#{$i} {
+        margin-top: $spacer-value;
+        margin-bottom: $spacer-value;
+    }
 
-/* Shadows */
-:root {
-    $shadow-0: none;
-    $shadow-1: 0px 1px 3px 0px $color-border;
-    $shadow-2: 0px 10px 15px -3px $color-border;
-}
-
-/* Helpers */
-:root {
-    // Margin and padding
-    @for $i from 0 through 10 {
-        $gap-size: $i * $spacing-1;
-
-        .m-#{$i} {
-            margin: $gap-size;
-        }
-        .mt-#{$i} {
-            margin-top: $gap-size;
-        }
-        .mr-#{$i} {
-            margin-right: $gap-size;
-        }
-        .mb-#{$i} {
-            margin-bottom: $gap-size;
-        }
-        .ml-#{$i} {
-            margin-left: $gap-size;
-        }
-        .p-#{$i} {
-            padding: $gap-size;
-        }
-        .pt-#{$i} {
-            padding-top: $gap-size;
-        }
-        .pr-#{$i} {
-            padding-right: $gap-size;
-        }
-        .pb-#{$i} {
-            padding-bottom: $gap-size;
-        }
-        .pl-#{$i} {
-            padding-left: $gap-size;
-        }
+    .px-#{$i} {
+        padding-left: $spacer-value;
+        padding-right: $spacer-value;
+    }
+    .py-#{$i} {
+        padding-top: $spacer-value;
+        padding-bottom: $spacer-value;
     }
 }

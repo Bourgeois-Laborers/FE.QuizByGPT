@@ -1,1 +1,21 @@
+@import '@csstools/normalize.css';
+
+@import './colors';
 @import './variables';
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-family);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-regular);
+}
+
+body {
+    margin: 0;
+
+    background: var(--color-background);
+    color: var(--color-text);
+}

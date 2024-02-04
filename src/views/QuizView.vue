@@ -3,5 +3,7 @@ import { BaseContainer } from '@/components/templates'
 </script>
 
 <template>
-    <BaseContainer> </BaseContainer>
+    <BaseContainer>
+        {{ $t('app.quiz.title') }}
+    </BaseContainer>
 </template>
