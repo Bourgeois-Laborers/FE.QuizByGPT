@@ -21,7 +21,7 @@ const emit = defineEmits<{
 
 <style lang="scss">
 .component-button {
-    padding: var(--spacing-2);
+    padding: var(--spacing-3);
     background: var(--color-primary);
     border: var(--border-width) solid var(--color-primary);
     border-radius: var(--rounded-sm);
