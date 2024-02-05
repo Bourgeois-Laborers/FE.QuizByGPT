@@ -8,19 +8,20 @@ const emit = defineEmits<{
 
 const prompt = ref('')
 
-const onSubmitPrompt = () => {
+const onSubmit = () => {
     emit('submit', prompt.value.trim())
 }
 </script>
 
 <template>
-    <form class="prompt-form" @submit.prevent="onSubmitPrompt">
-        <BaseLabel id="prompt" class="mb-1">{{ $t('app.home.prompt.label') }}</BaseLabel>
+    <form class="prompt-form" @submit.prevent="onSubmit">
+        <BaseLabel for="prompt" class="mb-1">{{ $t('app.home.prompt.label') }}</BaseLabel>
         <BaseTextarea
             v-model="prompt"
             id="prompt"
             :placeholder="$t('app.home.prompt.placeholder')"
             :rows="8"
+            inputmode="text"
             class="mb-4"
         />
         <BaseButton type="submit">{{ $t('app.home.prompt.submit') }}</BaseButton>

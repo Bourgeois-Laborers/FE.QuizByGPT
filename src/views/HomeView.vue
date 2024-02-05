@@ -1,9 +1,23 @@
 <script setup lang="ts">
-import { PromptForm } from '@/components/organisms'
+import { useToggle } from '@vueuse/core'
+import { PromptForm, NameModal } from '@/components/molecules'
 import { BaseContainer } from '@/components/templates'
+import { useUserSession } from '@/store'
 
-const onSendPrompt = (prompt: string) => {
-    console.log(prompt)
+const [isNameModal, onToggleNameModal] = useToggle()
+const { isUserSessionActive, createUserSession } = useUserSession()
+
+const onSubmitPrompt = (prompt: string) => {
+    // TODO: send prompt to server
+}
+
+const onSubmitName = async (name: string) => {
+    await createUserSession(name)
+    onToggleNameModal()
+}
+
+if (!isUserSessionActive.value) {
+    onToggleNameModal()
 }
 </script>
 
@@ -12,7 +26,9 @@ const onSendPrompt = (prompt: string) => {
         <h1 class="home-page__title mb-4 mt-0">{{ $t('app.home.header') }}</h1>
         <p class="home-page__subtitle mb-10">{{ $t('app.home.content') }}</p>
 
-        <PromptForm @submit="onSendPrompt" />
+        <PromptForm @submit="onSubmitPrompt" />
+
+        <NameModal v-if="isNameModal" @submit="onSubmitName" />
     </BaseContainer>
 </template>
 
@@ -23,39 +39,68 @@ const onSendPrompt = (prompt: string) => {
 }
 
 .home-page__title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     line-height: 1.4;
     max-width: max-content;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: var(--spacing-1) solid var(--color-accent);
-    padding-right: var(--spacing-1);
-    animation:
-        typing 3.5s steps(30, end),
-        blink-caret 0.75s step-end infinite;
-
-    @keyframes typing {
-        from {
-            width: 0;
-        }
-        to {
-            width: 100%;
-        }
-    }
-
-    @keyframes blink-caret {
-        from,
-        to {
-            border-color: transparent;
-        }
-        50% {
-            border-color: var(--color-accent);
-        }
-    }
 }
 
 .home-page__subtitle {
     font-size: 1.25rem;
-    line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+    .home-page__title {
+        &::after {
+            content: '|';
+            color: var(--color-accent);
+            animation: blink 0.75s infinite;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .home-page__title {
+        font-size: 3.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: var(--spacing-1) solid var(--color-accent);
+        padding-right: var(--spacing-1);
+        animation:
+            typewriter 4s steps(44) 1 normal both,
+            blink-border 0.75s infinite;
+    }
+
+    .home-page__subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes blink-border {
+    0%,
+    100% {
+        border-color: var(--color-accent);
+    }
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
 </style>

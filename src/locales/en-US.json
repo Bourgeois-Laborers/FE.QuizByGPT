@@ -7,8 +7,13 @@
 			"content": "This quiz application is powered by GPT, offering a new and interactive way to learn and test your knowledge on a wide range of topics. Get started now and explore the endless possibilities.",
 			"prompt": {
 				"label": "Choose from default topics or input your own to start the quiz",
-				"placeholder": "Enter quiz topic here (e.g. history, science, etc.)",
+				"placeholder": "Enter quiz topic (e.g. history, science, etc.)",
 				"submit": "Start quiz"
+			},
+			"name": {
+				"label": "Input your name to identify yourself in the quiz",
+				"placeholder": "Enter your name",
+				"submit": "Submit"
 			}
 		},
 		"session": {

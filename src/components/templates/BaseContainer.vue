@@ -8,7 +8,7 @@
 .component-container {
     width: 100%;
     margin: 0 auto;
-    padding: 0 var(--spacing-4);
+    padding: var(--spacing-4);
 }
 
 @media (min-width: 576px) {
