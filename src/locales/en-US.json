@@ -5,15 +5,11 @@
 			"title": "Home",
 			"header": "Quiz powered by GPT",
 			"content": "This quiz application is powered by GPT, offering a new and interactive way to learn and test your knowledge on a wide range of topics. Get started now and explore the endless possibilities.",
-			"prompt": {
-				"label": "Choose from default topics or input your own to start the quiz",
-				"placeholder": "Enter quiz topic (e.g. history, science, etc.)",
-				"submit": "Start quiz"
-			},
-			"name": {
-				"label": "Input your name to identify yourself in the quiz",
-				"placeholder": "Enter your name",
-				"submit": "Submit"
+			"chat": {
+				"welcomeMessage": "Welcome to our Interactive Quiz Experience! Powered by advanced AI, we're here to offer you a fun and engaging way to test your knowledge and learn something new on a wide range of topics. Let's get started!",
+				"askForName": "To personalize your quiz experience, could you please tell us your name?",
+				"askForTopic": "Great, {userName}! Now, tell us which topic you're interested in today...",
+				"confirmTopic": "Awesome choice, {userName}! We're excited to test your knowledge on {userTopic}. Get ready for your first question!"
 			}
 		},
 		"session": {

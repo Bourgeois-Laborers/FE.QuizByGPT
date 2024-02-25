@@ -14,7 +14,11 @@ const useUserSession = createSharedComposable(() => {
         name: null
     })
 
-    const isUserSessionActive = computed<boolean>(() => state.id !== null && state.name !== null)
+    const userName = computed(() => state.name)
+
+    const setUserName = (name: string) => {
+        state.name = name
+    }
 
     const createUserSession = async (name: string) => {
         try {
@@ -34,7 +38,9 @@ const useUserSession = createSharedComposable(() => {
 
     return {
         state,
-        isUserSessionActive,
+        userName,
+
+        setUserName,
         createUserSession
     }
 })

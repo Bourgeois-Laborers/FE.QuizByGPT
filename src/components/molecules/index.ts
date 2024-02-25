@@ -1,4 +1,4 @@
-import PromptForm from './PromptForm.vue'
-import NameModal from './NameModal.vue'
+import UserChatInput from './UserChatInput.vue'
+import UserChatMessage from './UserChatMessage.vue'
 
-export { PromptForm, NameModal }
+export { UserChatInput, UserChatMessage }

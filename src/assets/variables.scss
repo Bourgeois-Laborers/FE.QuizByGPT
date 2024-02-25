@@ -27,6 +27,8 @@
 
     /* Shadow */
     --shadow-focused: 0 0 0 3px rgba(57, 86, 169, 0.2);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 @for $i from 0 through 10 {

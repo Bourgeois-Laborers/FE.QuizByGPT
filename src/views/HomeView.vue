@@ -1,51 +1,104 @@
 <script setup lang="ts">
-import { useToggle } from '@vueuse/core'
-import { PromptForm, NameModal } from '@/components/molecules'
+import { useI18n } from 'vue-i18n'
+import { ref, onMounted } from 'vue'
+import { UserChat } from '@/components/organisms'
 import { BaseContainer } from '@/components/templates'
-import { useUserSession } from '@/store'
+import { useUserSession, useUserChat } from '@/store'
+import { delay } from '@/utils'
+import { UserChatParticipant } from '@/models'
+import type { UserMessage } from '@/models'
 
-const [isNameModal, onToggleNameModal] = useToggle()
-const { isUserSessionActive, createUserSession } = useUserSession()
+const { userName, setUserName } = useUserSession()
+const { state: userChatState, addMessage } = useUserChat()
+const { t } = useI18n()
 
-const onSubmitPrompt = (prompt: string) => {
-    // TODO: send prompt to server
+const isAnswering = ref(true)
+
+const onWelcome = () => {
+    addMessage({
+        id: String(Date.now()),
+        text: t('app.home.chat.welcomeMessage'),
+        createdAt: new Date(),
+        createdBy: UserChatParticipant.Bot
+    })
 }
 
-const onSubmitName = async (name: string) => {
-    await createUserSession(name)
-    onToggleNameModal()
+const onAskName = () => {
+    addMessage({
+        id: String(Date.now()),
+        text: t('app.home.chat.askForName'),
+        createdAt: new Date(),
+        createdBy: UserChatParticipant.Bot
+    })
 }
 
-if (!isUserSessionActive.value) {
-    onToggleNameModal()
+const onAskTopic = () => {
+    addMessage({
+        id: String(Date.now()),
+        text: t('app.home.chat.askForTopic').replace('{userName}', userName.value || ''),
+        createdAt: new Date(),
+        createdBy: UserChatParticipant.Bot
+    })
 }
+
+const onSendMessage = async (message: UserMessage) => {
+    isAnswering.value = true
+    if (!userName.value) {
+        addMessage(message)
+        setUserName(message.text)
+        await delay(onAskTopic, 1500)
+    } else {
+        // TODO: Add logic to handle the user's topic input
+    }
+    isAnswering.value = false
+}
+
+onMounted(async () => {
+    onWelcome()
+
+    if (!userName.value) {
+        await delay(onAskName, 1500)
+    } else {
+        await delay(onAskTopic, 1500)
+    }
+
+    isAnswering.value = false
+})
 </script>
 
 <template>
     <BaseContainer class="home-page">
         <h1 class="home-page__title mb-4 mt-0">{{ $t('app.home.header') }}</h1>
-        <p class="home-page__subtitle mb-10">{{ $t('app.home.content') }}</p>
+        <p class="home-page__subtitle mb-6">{{ $t('app.home.content') }}</p>
 
-        <PromptForm @submit="onSubmitPrompt" />
-
-        <NameModal v-if="isNameModal" @submit="onSubmitName" />
+        <UserChat
+            :messages="userChatState.messages"
+            :disabled="isAnswering"
+            class="home-page__chat"
+            @send="onSendMessage"
+        />
     </BaseContainer>
 </template>
 
 <style lang="scss">
 .home-page {
     min-height: 100vh;
-    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
 }
 
 .home-page__title {
-    font-size: 3rem;
+    font-size: 1.5rem;
     line-height: 1.4;
     max-width: max-content;
 }
 
 .home-page__subtitle {
-    font-size: 1.25rem;
+    font-size: 0.875rem;
+}
+
+.home-page__chat {
+    flex: 1;
 }
 
 @media (max-width: 767px) {
@@ -60,7 +113,7 @@ if (!isUserSessionActive.value) {
 
 @media (min-width: 768px) {
     .home-page__title {
-        font-size: 3.5rem;
+        font-size: 2.75rem;
         white-space: nowrap;
         overflow: hidden;
         border-right: var(--spacing-1) solid var(--color-accent);
@@ -68,6 +121,21 @@ if (!isUserSessionActive.value) {
         animation:
             typewriter 4s steps(44) 1 normal both,
             blink-border 0.75s infinite;
+    }
+
+    .home-page__subtitle {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .home-page {
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .home-page__title {
+        font-size: 3.5rem;
     }
 
     .home-page__subtitle {

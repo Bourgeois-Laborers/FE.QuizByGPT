@@ -1,3 +1,4 @@
+import useUserChat from './useUserChat'
 import useUserSession from './useUserSession'
 
-export { useUserSession }
+export { useUserChat, useUserSession }
