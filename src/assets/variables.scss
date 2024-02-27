@@ -1,0 +1,87 @@
+:root {
+    /* Typography */
+    --font-family: system-ui, sans-serif;
+    --font-size: 1rem;
+    --font-weight: 400;
+
+    /* Spacing */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.5rem;
+    --spacing-6: 2rem;
+    --spacing-7: 3rem;
+    --spacing-8: 4rem;
+    --spacing-9: 6rem;
+    --spacing-10: 8rem;
+
+    /* Rounded */
+    --rounded-sm: 0.25rem;
+    --rounded-md: 0.5rem;
+    --rounded-lg: 1rem;
+
+    /* Border */
+    --border-width: 1px;
+
+    /* Shadow */
+    --shadow-focused: 0 0 0 3px rgba(57, 86, 169, 0.2);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@for $i from 0 through 10 {
+    $spacer-value: $i * 0.25rem;
+
+    .m-#{$i} {
+        margin: $spacer-value;
+    }
+    .p-#{$i} {
+        padding: $spacer-value;
+    }
+
+    .mt-#{$i} {
+        margin-top: $spacer-value;
+    }
+    .mr-#{$i} {
+        margin-right: $spacer-value;
+    }
+    .mb-#{$i} {
+        margin-bottom: $spacer-value;
+    }
+    .ml-#{$i} {
+        margin-left: $spacer-value;
+    }
+
+    .pt-#{$i} {
+        padding-top: $spacer-value;
+    }
+    .pr-#{$i} {
+        padding-right: $spacer-value;
+    }
+    .pb-#{$i} {
+        padding-bottom: $spacer-value;
+    }
+    .pl-#{$i} {
+        padding-left: $spacer-value;
+    }
+
+    .mx-#{$i} {
+        margin-left: $spacer-value;
+        margin-right: $spacer-value;
+    }
+    .my-#{$i} {
+        margin-top: $spacer-value;
+        margin-bottom: $spacer-value;
+    }
+
+    .px-#{$i} {
+        padding-left: $spacer-value;
+        padding-right: $spacer-value;
+    }
+    .py-#{$i} {
+        padding-top: $spacer-value;
+        padding-bottom: $spacer-value;
+    }
+}
